@@ -11,7 +11,9 @@ const {pool} = require('./utils/db');
 // ******* UTILS *******
 const {handleError} = require("./utils/errors");
 // ******* ROUTERS *******
-
+const {userRouter} = require('./routers/user');
+const {todoRouter} = require('./routers/todo');
+const {homeRouter} = require('./routers/home');
 // ******* MIDDLEWARES *******
 // ******* EXPRESS CFG *******
 const app = express();
@@ -58,10 +60,14 @@ app.use(session({
 // ******* EXPRESS-MYSQL-SESSION END *******
 app.use(flash());
 
-// MIEJSCE NA app.use ROUTER
+app.use('/user',userRouter);
+app.use('/home', homeRouter);
+app.use('/todo', todoRouter);
+
+
 
 app.get('/', (req, res) => {
-    res.send('OK, dziala aplikacja. Lecimy z koksem.')
+    res.redirect('/home');
 });
 
 app.listen(3000, 'localhost', () => {
