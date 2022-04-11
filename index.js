@@ -1,18 +1,33 @@
 require('dotenv').config();
 const express = require('express');
-const {urlencoded} = require('express');
+const {
+    urlencoded
+} = require('express');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const session = require('express-session')
 const flash = require('connect-flash');
-const {handlebarsHelpers} = require("./utils/handlebars-helpers");
-const {pool} = require('./utils/db');
+const {
+    handlebarsHelpers
+} = require("./utils/handlebars-helpers");
+const {
+    pool
+} = require('./utils/db');
 // ******* UTILS *******
-const {handleError} = require("./utils/errors");
+const {
+    handleError
+} = require("./utils/errors");
 // ******* ROUTERS *******
-const {userRouter} = require('./routers/user');
-const {todoRouter} = require('./routers/todo');
-const {homeRouter} = require('./routers/home');
+const {
+    userRouter
+} = require('./routers/user');
+const {
+    todoRouter
+} = require('./routers/todo');
+const {
+    homeRouter
+} = require('./routers/home');
+const handlebars = require('express-handlebars');
 // ******* MIDDLEWARES *******
 // ******* EXPRESS CFG *******
 const app = express();
@@ -53,10 +68,18 @@ app.use(session({
 // ******* EXPRESS-MYSQL-SESSION END *******
 app.use(flash());
 
-app.use('/user',userRouter);
+app.use('/user', userRouter);
 app.use('/home', homeRouter);
 app.use('/todo', todoRouter);
 
+// ******* EXPRESS HANDLEBARS *******
+
+const hbs = handlebars.create({
+    extname: '.hbs'
+});
+
+app.set('view engine', '.hbs');
+app.engine('hbs', hbs.engine);
 
 
 app.get('/', (req, res) => {
