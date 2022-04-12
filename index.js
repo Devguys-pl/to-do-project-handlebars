@@ -75,7 +75,8 @@ app.use('/todo', todoRouter);
 // ******* EXPRESS HANDLEBARS *******
 
 const hbs = handlebars.create({
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: handlebarsHelpers
 });
 
 app.set('view engine', '.hbs');

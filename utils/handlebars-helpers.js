@@ -1,6 +1,6 @@
 const handlebarsHelpers = {
-    isAdmin: (a) => {
-        return !!a
+    checkIsLogged: (a) => {
+        return !a
     },
 
     // handleUrlUserId: (userId) => {

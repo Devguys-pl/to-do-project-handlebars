@@ -1,1 +1,136 @@
-<h1>body of home Page</h1>
+    <!-- Login Modal -->
+
+    <div class="modal fade" id="signinModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Sign in</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/user/login" method="POST">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" aria-describedby="emailHelp"
+                                placeholder="Enter email" name="email" autocomplete="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" name="password"
+                                autocomplete="current-password">
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-light btn-sm">Log in</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+
+    <div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Sign up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/user/create" method="POST">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" aria-describedby="emailHelp"
+                                placeholder="Enter email" name="email" autocomplete="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" name="password"
+                                autocomplete="new-password">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-light btn-sm">Sign up</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Login / Register buttons -->
+
+    <div class="container">
+        <div class="row py-1 loginRegisterDiv">
+            <div class="col-sm loginRegisterCol">
+                {{#if isLogged}}
+                <h5>Welcome</h5>
+                <button type="button" class="btn btn-outline-light btn-sm">Log out</button>
+                 {{/if}}
+                 {{#if (checkIsLogged isLogged)}}               
+                <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#signinModal">
+                    Sign in
+                </button>                            
+                <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#signupModal">
+                    Sign up
+                </button>
+                {{/if}}   
+            </div>
+        </div>
+
+        <!-- Header -->
+
+        <div class="row py-5">
+            <div class="col-11">
+                <h1>T O D O</h1>
+            </div>
+            <div class="col-1">
+                <!-- <i class="fa-regular fa-sun"></i> -->
+            </div>
+        </div>
+
+        <!-- New task Container -->
+
+        <div class="row my-5 addTaskContainer">
+            <form action="http://localhost:3000/todo/create" method="POST">
+                <div class="col my-1">
+                    <button type="submit" class="addTaskBtn btn btn-light mx-4">+</button>
+                    <input name="taskTitle" class="addTaskInpt my-4 ms-4" type="text" placeholder="Create new task...">
+                </div>
+            </form>
+        </div>
+
+        <!-- <a href="/todo/active" class="btn btn-light my-3 mx-4 completeBtn">✓</a> -->
+        <!-- Task List -->
+
+        <div class="taskList row mt-5 tasks">
+        </div>
+
+        <!-- Task info / Navbar -->
+
+        <div class="row tasksInfo">
+            <hr class="hr">
+            <div class="col ms-5 pt-3">
+                <p class="itemsLeft">4 items left</p>
+            </div>
+            <div class="col-2 pt-3">
+                <p class="navbarP">All</p>
+            </div>
+            <div class="col-2 pt-3">
+                <p class="navbarP">Active</p>
+            </div>
+            <div class="col-2 pt-3">
+                <p class="navbarP">Completed</p>
+            </div>
+            <div class="col me-5 pt-3 clear-completed">
+                <p class="navbarP">Clear Completed</p>
+            </div>
+        </div>
+    </div>
