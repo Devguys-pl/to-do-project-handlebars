@@ -109,10 +109,22 @@
 
         <!-- <a href="/todo/active" class="btn btn-light my-3 mx-4 completeBtn">✓</a> -->
         <!-- Task List -->
-
-        <div class="taskList row mt-5 tasks">
+        <div class="row tasks">
+            {{#each todosList}}
+                    <div class="col-1">
+                        <a href="" id="{{{this.id}}}" class="btn btn-light my-3 mx-4 completeBtn">✓</a>
+                    </div>
+                    <div class="col-2">
+                        <p class="my-4 createdAt">{{{this.createdAt}}}</p>
+                    </div>
+                    <div class="col-8">
+                        <p class="my-4">{{{this.taskTitle}}}</p>
+                    </div>
+                    <div class="col-1 dots-icon">
+                        <i class="fa-solid fa-ellipsis p-2 m-3"></i>
+                    </div>
+            {{/each}}
         </div>
-
         <!-- Task info / Navbar -->
 
         <div class="row tasksInfo">
