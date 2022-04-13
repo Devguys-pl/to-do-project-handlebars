@@ -27,8 +27,10 @@ class TodoRecord {
         });
     }
 
-    static async listAll() {
-        const [results] = await pool.execute('SELECT * FROM `todos`');
+    static async listAll(userId) {
+        const [results] = await pool.execute('SELECT * FROM `todos` WHERE `userId` = :userId', {
+          userId,
+        });
         return results
     }
 

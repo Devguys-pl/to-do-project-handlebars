@@ -7,14 +7,17 @@ const {URLSearchParams} = require('url');
 const homeRouter = Router();
 
 homeRouter.get('/', async (req, res, next) => {
-  const todosList = await TodoRecord.listAll();
+  
+  const todosList = await TodoRecord.listAll(req.session.user.id);
   const isLogged = true;
   console.log(todosList)
   res.render('home', {
     isLogged,
     todosList,
   });
-})
+});
+
+homeRouter.get('')
 
 
 
