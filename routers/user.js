@@ -11,7 +11,7 @@ const nodemailer = require('nodemailer');
 const userRouter = Router();
 
 userRouter.get('/', async (req, res, next) => {
-  res.send('Router działa')
+  res.redirect('/home')
 })
 
 
@@ -67,6 +67,18 @@ userRouter.post('/login',  async (req, res,) => {
         return res.redirect('/home');
     }
 });
+
+userRouter.get('/logout', async(req, res) => {
+    req.session.destroy(function(err){
+        if(err){
+            console.log('Something wrong')
+        } else {
+            console.log('Succes LOGOUT');
+            req.flash('userLogout', 'Successful logout')
+           return res.redirect('/home')
+        }
+    })
+})
 
 
 

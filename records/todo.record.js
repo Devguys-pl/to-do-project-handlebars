@@ -33,6 +33,13 @@ class TodoRecord {
         });
         return results
     }
+    
+    static async listAllByStatus(userId, status) {
+      const [results] = await pool.execute('SELECT * FROM `todos` WHERE `userId`= :userId AND `status`= :status', {
+        userId,
+        status,
+      });
+    };
 
     static async getOneById(id) {
         const [results] = await pool.execute('SELECT * FROM `todos`  WHERE `id` = :id', {
