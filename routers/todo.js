@@ -1,7 +1,5 @@
 require('dotenv').config();
-const {
-  Router
-} = require('express');
+const {Router} = require('express');
 const userMiddleware = require('../middleware/user.middleware');
 const {TodoRecord} = require("../records/todo.record");
 const todoRouter = Router();

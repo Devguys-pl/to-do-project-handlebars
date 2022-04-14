@@ -24,11 +24,10 @@ homeRouter.get('/', async (req, res, next) => {
       }
     })
   }
-  const tmpUserId = 'a9dc0e32-b20c-40d0-8b24-0a5168006863'
-  const todosList = await TodoRecord.listAll(tmpUserId);
-  // const isLogged = req.session.user.isLogged;
+  const todosList = await TodoRecord.listAll(req.session.user.id);
+  const isLogged = req.session.user.isLogged;
   res.render('home', {
-    isLogged: true,
+    isLogged,
     todosList,
     message: {
       emptyField: req.flash('emptyField'),
