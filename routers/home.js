@@ -1,26 +1,34 @@
 require('dotenv').config();
-const {Router} = require('express');
+const {
+  Router
+} = require('express');
 const userMiddleware = require('../middleware/user.middleware');
-const {UserRecord} = require("../records/user.record");
-const {TodoRecord} = require("../records/todo.record");
-const {URLSearchParams} = require('url');
+const {
+  UserRecord
+} = require("../records/user.record");
+const {
+  TodoRecord
+} = require("../records/todo.record");
+const {
+  URLSearchParams
+} = require('url');
 const homeRouter = Router();
 
 homeRouter.get('/', async (req, res, next) => {
-  // if (!req.session.user) {
-  //   req.flash('userNotLogged', 'You are not logged. If you want to see own task you have to log in. Now you can only create tasks that will be saved temporarily in local storage for up to 24 hours and only available from one device. Otherwise, create an account and log in. ');
-  //   return res.render('home', {
-  //     isLogged: false,
-  //     message: {
-  //       userNotLogged: req.flash('userNotLogged'),
-  //     }
-  //   })
-  // }
+  if (!req.session.user) {
+    req.flash('userNotLogged', 'You are not logged. If you want to see own task you have to log in. Now you can only create tasks that will be saved temporarily in local storage for up to 24 hours and only available from one device. Otherwise, create an account and log in. ');
+    return res.render('home', {
+      isLogged: false,
+      message: {
+        userNotLogged: req.flash('userNotLogged'),
+      }
+    })
+  }
   const tmpUserId = 'a9dc0e32-b20c-40d0-8b24-0a5168006863'
   const todosList = await TodoRecord.listAll(tmpUserId);
   // const isLogged = req.session.user.isLogged;
   res.render('home', {
-    isLogged: true,
+    isLogged: false,
     todosList,
     message: {
       emptyField: req.flash('emptyField'),
