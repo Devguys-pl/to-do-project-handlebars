@@ -1,17 +1,9 @@
 require('dotenv').config();
-const {
-  Router
-} = require('express');
+const {Router} = require('express');
 const userMiddleware = require('../middleware/user.middleware');
-const {
-  UserRecord
-} = require("../records/user.record");
-const {
-  TodoRecord
-} = require("../records/todo.record");
-const {
-  URLSearchParams
-} = require('url');
+const {UserRecord} = require("../records/user.record");
+const {TodoRecord} = require("../records/todo.record");
+const {URLSearchParams} = require('url');
 const homeRouter = Router();
 
 homeRouter.get('/', async (req, res, next) => {
@@ -24,11 +16,10 @@ homeRouter.get('/', async (req, res, next) => {
       }
     })
   }
-  const tmpUserId = 'a9dc0e32-b20c-40d0-8b24-0a5168006863'
-  const todosList = await TodoRecord.listAll(tmpUserId);
-  // const isLogged = req.session.user.isLogged;
+  const todosList = await TodoRecord.listAll(req.session.user.id);
+  const isLogged = req.session.user.isLogged;
   res.render('home', {
-    isLogged: false,
+    isLogged,
     todosList,
     message: {
       emptyField: req.flash('emptyField'),
