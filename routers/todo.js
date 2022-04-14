@@ -17,12 +17,14 @@ todoRouter.get('/:taskStatus', async (req, res) => {
 })
 
 todoRouter.get('/remove/completedTasks', async (req, res) => {
-  const tmpUserId = 'a9dc0e32-b20c-40d0-8b24-0a5168006863'
-  const results = await TodoRecord.listAll(tmpUserId);
-  const todosList = results[0];
-  window.console.log(todosList)
-  console.log(`FROM REMOVE ${todosList}`)
-  return res.redirect('/home');
+  try {
+    await TodoRecord.removeCompletedTasks();
+    req.flash('successfulCompletedTasksRemoved', 'Completed tasks were removed.');
+    return res.redirect('/home');
+  } catch(e) {
+    req.flash('somethingWrong', 'Something wrong, please try again later');
+    return res.redirect('/home');
+  }
 })
 
 // todoRouter.get('/remove/:id', async (req, res) => {
