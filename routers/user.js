@@ -24,7 +24,7 @@ userRouter.get('/', async (req, res, next) => {
 
 
 userRouter.post('/create', async (req, res) => {
-    if (req.body.email.length <= 0 || req.body.password.length <= 0 || req.body.name.length <= 0 || req.body.surname.length <= 0) {
+    if (req.body.email.length <= 0 || req.body.password.length <= 0) {
         req.flash('emptyField', 'Please insert the requested information.');
         return res.redirect('/home');
     }
