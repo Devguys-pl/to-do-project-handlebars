@@ -6,7 +6,7 @@ const {TodoRecord} = require("../records/todo.record");
 const {URLSearchParams} = require('url');
 const homeRouter = Router();
 
-homeRouter.get('/', async (req, res, next) => {
+homeRouter.get('/', userMiddleware.checkSession, async (req, res, next) => {
   const todosList = await TodoRecord.listAll(req.session.user.id);
   const isLogged = req.session.user.isLogged;
   res.render('home', {

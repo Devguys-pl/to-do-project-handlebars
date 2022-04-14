@@ -3,12 +3,7 @@ const handlebarsHelpers = {
         return !a
     },
 
-    // handleUrlUserId: (userId) => {
-    //     const qs = new URLSearchParams({
-    //         userId: userId,
-    //     });
-    //     return qs.toString();
-    // },
+
 };
 
 module.exports = {
