@@ -70,7 +70,7 @@
             <div class="col-sm loginRegisterCol">
                 {{#if isLogged}}
                 <h5>Welcome</h5>
-                <button type="button" class="btn btn-outline-light btn-sm">Log out</button>
+                <a href="/user/logout" class="btn btn-outline-light btn-sm">Log out</a>
                  {{/if}}
                  {{#if (checkIsLogged isLogged)}}               
                 <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="modal"
@@ -84,9 +84,14 @@
                 {{/if}}   
             </div>
         </div>
-        <div>
-            {{{message.successLogin}}}
+
+
+        <div class="alert alert-warning" role="alert">
+            <div><i class="fa-solid fa-triangle-exclamation fa-2x"></i></div>
+            <div>{{{message.userNotLogged}}}</div>
         </div>
+
+
         <!-- Header -->
 
         <div class="row py-5">
@@ -134,7 +139,7 @@
         <div class="row tasksInfo">
             <hr class="hr">
             <div class="col ms-5 pt-3">
-                <p class="itemsLeft">4 items left</p>
+                <p class="itemsLeft"> items left</p>
             </div>
             <div class="col-2 pt-3">
                 <p class="navbarP">All</p>

@@ -1,5 +1,5 @@
 * {
-    color: rgb(230, 230, 230);
+    /* color: rgb(230, 230, 230); */
 }
 
 body {
@@ -34,6 +34,18 @@ background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/s
 
 h1 {
     color: rgb(230, 230, 230);
+}
+
+.alert-warning {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.fa-triangle-exclamation {
+    margin-right: 5px;
 }
 
 /* .fa-sun {

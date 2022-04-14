@@ -28,7 +28,7 @@ homeRouter.get('/', async (req, res, next) => {
   const todosList = await TodoRecord.listAll(tmpUserId);
   // const isLogged = req.session.user.isLogged;
   res.render('home', {
-    isLogged: false,
+    isLogged: true,
     todosList,
     message: {
       emptyField: req.flash('emptyField'),
