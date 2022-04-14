@@ -56,9 +56,10 @@ class TodoRecord {
         });
     };
 
-    static  async removeCompletedTasks() {
-        await pool.execute('DELETE FROM `todos` WHERE `status` = :status', {
+    static  async removeCompletedTasks(userId) {
+        await pool.execute('DELETE FROM `todos` WHERE `status` = :status AND `userId`= :userId', {
             status: 'Completed',
+            userId
         });
     };
 

@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 
 const userRouter = Router();
 
-userRouter.get('/', async (req, res, next) => {
+userRouter.get('/', async (req, res) => {
     res.redirect('/home')
 })
 
@@ -74,7 +74,7 @@ userRouter.get('/logout', async (req, res) => {
         if (err) {
             console.log('Something wrong')
         } else {
-            console.log('Succes LOGOUT');
+            console.log('Success LOGOUT');
             req.flash('userLogout', 'Successful logout')
             return res.redirect('/home')
         }

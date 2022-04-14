@@ -16,7 +16,7 @@ todoRouter.get('/:taskStatus', async (req, res) => {
 
 todoRouter.get('/remove/completedTasks', async (req, res) => {
   try {
-    await TodoRecord.removeCompletedTasks();
+    await TodoRecord.removeCompletedTasks(req.session.user.id);
     req.flash('successfulCompletedTasksRemoved', 'Completed tasks were removed.');
     return res.redirect('/home');
   } catch(e) {
