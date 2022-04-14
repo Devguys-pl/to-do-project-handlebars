@@ -70,6 +70,17 @@ todoRouter.get('/status/:id/', async (req, res) => {
   }
 });
 
+todoRouter.post('/create', async (req, res) => {
+    if (req.body.taskTitle.length <= 0) {
+        req.flash('emptyField', 'Please insert the requested information.');
+        return res.redirect('/home');
+    }
+    const newTask = new TodoRecord(req.body)
+    await newTask.create(req.session.user.id)
+    req.flash('successTaskCreated', 'Task was successful created');
+    return res.redirect('/home')
+})
+
 
 
 module.exports = {
