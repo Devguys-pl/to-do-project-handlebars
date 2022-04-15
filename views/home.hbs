@@ -144,16 +144,84 @@
       <div>{{{message.userNotLogged}}}</div>
     </div>
   {{/if}}
+
   {{#if message.successLogin}}
     <div class="alert alert-info" role="alert">
       <div><i class="fa-solid fa-circle-info fa-2x"></i></div>
       <div>{{{message.successLogin}}}</div>
     </div>
   {{/if}}
+  {{! NOT WORKING }}
   {{#if message.successRegister}}
     <div class="alert alert-info" role="alert">
       <div><i class="fa-solid fa-circle-info fa-2x"></i></div>
       <div>{{{message.successRegister}}}</div>
+    </div>
+  {{/if}}
+  {{! NOT WORKING - INSTEAD SHOWING UP message.userNotLogged }}
+  {{#if message.successLogout}}
+    <div class="alert alert-info" role="alert">
+      <div><i class="fa-solid fa-circle-info fa-2x"></i></div>
+      <div>{{{message.successLogout}}}</div>
+    </div>
+  {{/if}}
+  {{! NOT WORKING }}
+  {{#if message.somethingWrong}}
+    <div class="alert alert-warning" role="alert">
+      <div><i class="fa-solid fa-triangle-exclamation fa-2x"></i></div>
+      <div>{{{message.somethingWrong}}}</div>
+    </div>
+  {{/if}}
+  {{! BUGGED }}
+  {{!-- {{#if message.emptyField}}
+    {{{message.emptyField}}}
+  {{/if}} --}}
+
+  {{! CANT EXECUTE DATABASE NOT WORKING }}
+  {{#if message.successTaskCreated}}
+    <div class="alert alert-info" role="alert">
+      <div><i class="fa-solid fa-circle-info fa-2x"></i></div>
+      <div>{{{message.successTaskCreated}}}</div>
+    </div>
+  {{/if}}
+
+  {{! CANT EXECUTE DATABASE NOT WORKING }}
+  {{#if message.successfulTaskRemoved}}
+    <div class="alert alert-info" role="alert">
+      <div><i class="fa-solid fa-circle-info fa-2x"></i></div>
+      <div>{{{message.successfulTaskRemoved}}}</div>
+    </div>
+  {{/if}}
+
+  {{! CANT EXECUTE DATABASE NOT WORKING }}
+  {{#if message.unSuccessfulTaskRemoved}}
+    <div class="alert alert-warning" role="alert">
+      <div><i class="fa-solid fa-triangle-exclamation fa-2x"></i></div>
+      <div>{{{message.unSuccessfulTaskRemoved}}}</div>
+    </div>
+  {{/if}}
+
+  {{! CANT EXECUTE DATABASE NOT WORKING }}
+  {{#if message.successfulChangeTaskStatus}}
+    <div class="alert alert-info" role="alert">
+      <div><i class="fa-solid fa-circle-info fa-2x"></i></div>
+      <div>{{{message.successfulChangeTaskStatus}}}</div>
+    </div>
+  {{/if}}
+
+  {{! Cannot read properties of undefined (reading 'password') }}
+  {{#if message.userNotExist}}
+    <div class="alert alert-warning" role="alert">
+      <div><i class="fa-solid fa-triangle-exclamation fa-2x"></i></div>
+      <div>{{{message.userNotExist}}}</div>
+    </div>
+  {{/if}}
+
+  {{! NOT WORKING }}
+  {{#if message.userExist}}
+    <div class="alert alert-warning" role="alert">
+      <div><i class="fa-solid fa-triangle-exclamation fa-2x"></i></div>
+      <div>{{{message.userExist}}}</div>
     </div>
   {{/if}}
 
