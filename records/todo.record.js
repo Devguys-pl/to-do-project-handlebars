@@ -26,6 +26,20 @@ class TodoRecord {
             status: this.status
         });
     }
+    
+    async createInLocalStotage(){
+      if (typeof this.id === "undefined") {
+            const date = new Date();
+            let myDate = (date.getUTCFullYear()) + "/" + (date.getMonth() + 1)+ "/" + (date.getUTCDate());
+            this.id = uuid();
+            this.status = 'Active'
+            this.createdAt = myDate;
+        }
+        //kod na localStorage
+        return console.log('info sie pojawilo, znaczy, że nie jesteś zalogowany, a formularz wyslal dane na serwer do todo.js, a potem do todo.record.js i stworzyl tego consol loga.')
+    }
+      
+    
 
     static async listAll(userId) {
         const [results] = await pool.execute('SELECT * FROM `todos` WHERE `userId` = :userId', {
