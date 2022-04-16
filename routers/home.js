@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { Router } = require("express");
 const userMiddleware = require("../middleware/user.middleware");
-const viewRender = require('../utils/view.render');
+// const viewRender = require('../utils/view.render');
 const { UserRecord } = require("../records/user.record");
 const { TodoRecord } = require("../records/todo.record");
 const { URLSearchParams } = require("url");

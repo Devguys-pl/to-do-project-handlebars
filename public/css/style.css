@@ -113,6 +113,7 @@ h1 {
 .navbarP {
     color: rgb(105, 105, 105);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .itemsLeft {
