@@ -56,7 +56,7 @@ userRouter.post('/login', async (req, res, ) => {
                 isLogged: true,
             }
             req.flash('successLogin', 'Success Login, welcome!');
-            res.redirect('/home');
+            return res.redirect('/home');
         } else {
             req.flash('wrongInformation', 'Wrong password or e-mail');
             console.log('Wrong password or e-mail');
