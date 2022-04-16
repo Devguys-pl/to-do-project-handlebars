@@ -62,7 +62,8 @@ app.use('/todo', todoRouter);
 
 const hbs = handlebars.create({
     extname: '.hbs',
-    helpers: handlebarsHelpers
+    helpers: handlebarsHelpers,
+    partialsDir: '/views/partials/',
 });
 
 app.set('view engine', '.hbs');
