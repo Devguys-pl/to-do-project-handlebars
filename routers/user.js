@@ -64,6 +64,7 @@ userRouter.post('/login', async (req, res, ) => {
         }
     } catch (e) {
         console.log(e)
+        console.log('BRAK UZYTKOWNIKA')
         req.flash('userNotExist', 'The user does not exist');
         return res.redirect('/home');
     }
