@@ -62,6 +62,7 @@ h1 {
 .tasks {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    min-height: 72px;
 }
 
 .dots-icon {
