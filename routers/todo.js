@@ -75,16 +75,18 @@ todoRouter.post('/create', async (req, res) => {
         req.flash('emptyField', 'Please insert the requested information.');
         return res.redirect('/home');
     }
-    if (!req.body.session) {
-      const newTask = new TodoRecord(req.body);
-      await newTask.createInLocalStorage();
-      req.flash('successTaskCreated', 'Task was created and saved in localStorage');
-      return res.redirect('/home');
-    }
     const newTask = new TodoRecord(req.body)
     await newTask.create(req.session.user.id)
     req.flash('successTaskCreated', 'Task was successful created');
     return res.redirect('/home')
+});
+
+todoRouter.post('/create/localStorage', async (req, res) => {
+  console.log('TEST')
+  const newTask = new TodoRecord(req.body);
+  await newTask.createInLocalStorage();
+  req.flash('successTaskCreated', 'Task was created and saved in localStorage');
+  return res.redirect('/home');
 })
 
 
