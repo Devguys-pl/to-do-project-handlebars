@@ -27,7 +27,7 @@ class TodoRecord {
         });
     }
     
-    async createInLocalStotage(){
+    async createInLocalStorage(){
       if (typeof this.id === "undefined") {
             const date = new Date();
             let myDate = (date.getUTCFullYear()) + "/" + (date.getMonth() + 1)+ "/" + (date.getUTCDate());
