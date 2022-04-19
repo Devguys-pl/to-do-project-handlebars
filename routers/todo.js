@@ -8,6 +8,24 @@ todoRouter.get('/:taskStatus', async (req, res) => {
   const taskStatus = req.url.split('/')[1];
   if (taskStatus === 'Completed' || taskStatus=== 'Active') {
     const todosList = await TodoRecord.listAllByStatus(req.session.user.id, taskStatus);
+    const isLogged = req.session.user.isLogged;
+    return res.render("home", {
+      isLogged,
+      todosList,
+      message: {
+        emptyField: req.flash("emptyField"),
+        successLogin: req.flash("successLogin"),
+        somethingWrong: req.flash("somethingWrong"),
+        userNotExist: req.flash("userNotExist"),
+        userExist: req.flash("userExist"),
+        userCreated: req.flash("userCreated"),
+        successTaskCreated: req.flash('successTaskCreated'),
+        userLogout: req.flash("userLogout"),
+        successfulTaskRemoved: req.flash("successfulTaskRemoved"),
+        unSuccessfulTaskRemoved: req.flash("unSuccessfulTaskRemoved"),
+        successfulChangeTaskStatus: req.flash("successfulChangeTaskStatus"),
+      },
+    });
   } else {
     req.flash('somethingWrong', 'Something wrong, please try later');
     return res.redirect('/home');
