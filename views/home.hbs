@@ -237,17 +237,32 @@
   <!-- New task Container -->
 
   <div class="row my-5 addTaskContainer">
-    <form action="/todo/create" method="POST">
-      <div class="col my-1">
-        <button type="submit" class="addTaskBtn btn btn-light mx-4">+</button>
-        <input
-          name="taskTitle"
-          class="addTaskInpt my-4 ms-4"
-          type="text"
-          placeholder="Create new task..."
-        />
-      </div>
-    </form>
+    {{#if (checkIsLogged isLogged)}}
+      <form action="/todo/create/localStorage" method="POST">
+        <div class="col my-1">
+          <button type="submit" class="addTaskBtn btn btn-light mx-4">+</button>
+          <input
+            name="taskTitle"
+            class="addTaskInpt my-4 ms-4"
+            type="text"
+            placeholder="Create new task..."
+          />
+        </div>
+      </form>
+    {{/if}}
+    {{#unless (checkIsLogged isLogged)}}
+      <form action="/todo/create" method="POST">
+        <div class="col my-1">
+          <button type="submit" class="addTaskBtn btn btn-light mx-4">+</button>
+          <input
+            name="taskTitle"
+            class="addTaskInpt my-4 ms-4"
+            type="text"
+            placeholder="Create new task..."
+          />
+        </div>
+      </form>
+    {{/unless}}
   </div>
 
   <!-- <a href="/todo/active" class="btn btn-light my-3 mx-4 completeBtn">✓</a> -->
