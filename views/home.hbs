@@ -201,7 +201,6 @@
     </div>
   {{/if}}
 
-  {{! CANT EXECUTE DATABASE NOT WORKING }}
   {{#if message.successfulChangeTaskStatus}}
     <div class="alert alert-info" role="alert">
       <div><i class="fa-solid fa-circle-info fa-2x"></i></div>
@@ -256,11 +255,20 @@
   <div class="row tasks">
     {{#each todosList}}
       <div class="col-1">
-        <a
-          href="/todo/status/{{{this.id}}}"
-          id="{{{this.id}}}"
-          class="btn btn-light my-3 mx-4 completeBtn"
-        >✓</a>
+        {{#unless (checkIsComplete this.status)}}
+          <a
+            href="/todo/status/{{{this.id}}}"
+            id="{{{this.id}}}"
+            class="btn btn-light my-3 mx-4 completeBtn"
+          >✓</a>
+        {{/unless}}
+        {{#if (checkIsComplete this.status)}}
+          <a
+            href="/todo/status/{{{this.id}}}"
+            id="{{{this.id}}}"
+            class="btn btn-light my-3 mx-4 checkedCompleteBtn"
+          >✓</a>
+        {{/if}}
       </div>
       <div class="col-2">
         <p class="my-4 createdAt">{{{this.createdAt}}}</p>
